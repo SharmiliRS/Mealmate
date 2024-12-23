@@ -10,7 +10,8 @@ import Navbar from "./components/Navbar";
 import Contact from "./components/Contact";
 import DietPlan from "./components/Dietplan";
 import Callback from "./components/Callback";
-
+import SuggestFoodPage from "./components/Suggestfood";
+import DisplayData from "./components/Displaydata";
 
 function App() {
   
@@ -29,7 +30,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/callback" element={<Callback />} />
-
+        <Route path="/suggest-food" element={<SuggestFoodPage />}/>
+        <Route path="/display-data" element={<DisplayData />} />
       </Routes>
     </Router>
   );

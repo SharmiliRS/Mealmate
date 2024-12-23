@@ -9,6 +9,7 @@
     "axios": "^1.7.9",
     "base-64": "^1.0.0",
     "bootstrap": "^5.3.3",
+    "fitbit-api-handler": "^8.0.0",
     "gapi-script": "^1.2.0",
     "ionicons": "^7.4.0",
     "querystring": "^0.2.1",

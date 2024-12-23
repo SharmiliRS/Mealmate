@@ -1,30 +1,38 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
-import { useRef } from "react";
-
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
-    const navigate = useNavigate();
-      
-      const signup=()=>{
-        navigate("/signup")
-      }
-      const signin=()=>{
-        navigate("/signin")
-      }
+  const navigate = useNavigate();
+
+  // State to toggle menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // State to track user authentication
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    !!localStorage.getItem("isAuthenticated") // Example: Check from localStorage
+  );
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  const footerRef = useRef(null); // Create a reference for the footer
 
-    const scrollToFooter = () => {
-        if (footerRef.current) {
-            footerRef.current.scrollIntoView({ behavior: "smooth" }); // Smooth scroll to footer
-        }
-    };
+  const handleSignup = () => {
+    navigate("/signup");
+  };
+
+  const handleSignin = () => {
+    navigate("/signin");
+  };
+
+  const handleLogout = () => {
+    // Clear authentication-related storage and state
+    localStorage.removeItem("isAuthenticated");
+    setIsAuthenticated(false);
+
+    // Redirect to home page
+    navigate("/home");
+  };
 
   return (
     <div className="nav">
@@ -43,20 +51,32 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link className="nav-link" to="/contact" onClick={scrollToFooter}>
+            <Link className="nav-link" to="/contact">
               Contact
             </Link>
           </li>
-          <li>
-            <button className="btn-signin" onClick={signin}>
-              SIGN IN
-            </button>
-          </li>
-          <li>
-            <button className="btn-signup" onClick={signup}>
-              SIGN UP
-            </button>
-          </li>
+          {isAuthenticated ? (
+            // If user is authenticated, show Logout button
+            <li>
+              <button className="btn-logout" onClick={handleLogout}>
+                LOG OUT
+              </button>
+            </li>
+          ) : (
+            // If user is not authenticated, show Sign In and Sign Up buttons
+            <>
+              <li>
+                <button className="btn-signin" onClick={handleSignin}>
+                  SIGN IN
+                </button>
+              </li>
+              <li>
+                <button className="btn-signup" onClick={handleSignup}>
+                  SIGN UP
+                </button>
+              </li>
+            </>
+          )}
         </ul>
       </div>
       <div className="menu-toggle" onClick={toggleMenu}>

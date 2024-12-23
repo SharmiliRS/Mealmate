@@ -1,0 +1,183 @@
+/* DisplayData Component Styles */
+.display-data-page {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1100px;
+  padding: 40px;
+  margin: 20px;
+  margin-top: 90px;
+  margin-left: 210px;
+  transition: all 0.3s ease;
+}
+
+.display-data-page h1 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #2c3e50;
+}
+
+.details-container {
+  padding: 20px;
+  background-color: #fafafa;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.details-container h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #16a085;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 10px;
+}
+
+.details-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.details-container li {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.details-container li strong {
+  font-weight: 700;
+  color: #16a085;
+}
+
+.details-container p {
+  font-size: 16px;
+  color: #e74c3c;
+  text-align: center;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  gap: 15px;
+}
+
+.wearables-btn,
+.suggest-food-btn {
+  padding: 12px 25px;
+  font-size: 18px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.wearables-btn {
+  background-color: #21865C;
+  color: #fff;
+}
+
+.wearables-btn:hover {
+  cursor: pointer;
+    background-color: #175d42;
+    transform: scale(1.05);
+}
+
+.suggest-food-btn {
+  background-color: #21865C;
+  color: #fff;
+}
+
+.suggest-food-btn:hover {
+  cursor: pointer;
+  background-color: #175d42;
+  transform: scale(1.05);;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .display-data-page {
+    padding: 30px;
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  .details-container {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  li {
+    font-size: 14px;
+  }
+
+  .button-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .wearables-btn,
+  .suggest-food-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .display-data-page {
+    padding: 20px;
+    margin: 5px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .details-container {
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  li {
+    font-size: 12px;
+  }
+
+  .button-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .wearables-btn,
+  .suggest-food-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+  }
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #16a085;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

@@ -21,7 +21,7 @@ body {
   .signup-body {
     margin-top: 200px;
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px 40px;
+    padding: 50px 40px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 90%;
@@ -47,7 +47,6 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
-    text-align: center;
   }
   
   .signup-button {
@@ -65,18 +64,18 @@ body {
     background-color: #016c57;
   }
   
-  .signin-text {
+  .signup-text {
     margin-top: 10px;
     font-size: 0.9rem;
     color: #555;
   }
   
-  .signin-link {
+  .signup-text a {
     color: #014d40;
     font-weight: bold;
     text-decoration: none;
   }
   
-  .signin-link:hover {
+  .signup-text a:hover {
     text-decoration: underline;
   }

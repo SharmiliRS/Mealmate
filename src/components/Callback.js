@@ -1,89 +1,133 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from 'axios';  // Axios for making the token request
+import axios from 'axios';
 
 const Callback = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Extract authorization code from the URL query string
-    const params = new URLSearchParams(location.search);
-    const authorizationCode = params.get("https://www.fitbit.com/oauth2/authorize");
-    
+    const params = new URLSearchParams(window.location.search);
+    const authorizationCode = params.get("code");
+    console.log("Authorization Code:", authorizationCode); // Log the code
+
     if (authorizationCode) {
-      // Exchange the authorization code for an access token
       fetchAccessToken(authorizationCode);
     } else {
       console.error("No authorization code found");
+      localStorage.setItem("wearables_status", "failed");
+      navigate("/display-data");
     }
   }, [location]);
 
   const fetchAccessToken = async (authorizationCode) => {
-    const clientId = '23Q344';  // Replace with your Fitbit client ID
-    const clientSecret = '308220f7116ea1e2a70bb579173155e3';  // Replace with your Fitbit client secret
-    const redirectUri = 'http://localhost:3000/dietplan';  // Replace with your redirect URI
+    const clientId = "192a97a3726f531a0ea724c069ec1e2ee3882f2e98c23a2628f861020de22c15"; // Replace with your Withings client ID
+    const clientSecret = "db285d36b259b112fe734e3f0c6a2c9ce7a5b3554f9d752049a05d473092d67a"; // Replace with your Withings client secret
+    const redirectUri = "http://localhost:3000/callback"; // Replace with your redirect URI
 
-    // Make a POST request to the Fitbit API to exchange code for an access token
-    const tokenUrl = "https://api.fitbit.com/oauth2/token";
+    const tokenUrl = "https://wbsapi.withings.net/v2/oauth2";
+
     const body = new URLSearchParams({
+      action: "requesttoken",
       client_id: clientId,
       client_secret: clientSecret,
       code: authorizationCode,
+      grant_type: "authorization_code",
       redirect_uri: redirectUri,
-      grant_type: "authorization_code"
     });
 
     try {
       const response = await axios.post(tokenUrl, body, {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        }
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
       });
 
-      // Extract access token from the response
-      const { access_token } = response.data;
+      const { access_token, refresh_token, userid } = response.data.body;
 
-      // Store the access token (e.g., in localStorage or context)
-      localStorage.setItem('fitbit_access_token', access_token);
+      localStorage.setItem("withings_access_token", access_token);
+      localStorage.setItem("withings_refresh_token", refresh_token);
+      localStorage.setItem("withings_user_id", userid);
 
-      // Redirect user to the DietPlan page
-      navigate('/dietplan');
+      localStorage.setItem("wearables_status", "success");
+
+      console.log("Access Token:", access_token);
+      console.log("Refresh Token:", refresh_token);
+
+      navigate("/display-data");
     } catch (error) {
-      console.error("Error fetching access token:", error);
+      console.error("Error fetching the access token:", error);
+      localStorage.setItem("wearables_status", "failed");
+      navigate("/display-data");
     }
   };
 
-  return  (
-    <div style={styles.container}>
-      <div style={styles.text}>Redirecting...</div>
-      <div style={styles.loader}></div>
+  return (
+    <div className="callback-page">
+      <style>
+        {`
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+
+          .callback-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+          }
+
+          .callback-text {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+          }
+
+          .loader {
+            border: 10px solid #f3f3f3;
+            border-top: 10px solid rgb(0, 77, 27);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+          }
+
+          /* Mobile responsiveness */
+          @media (max-width: 768px) {
+            .callback-text {
+              font-size: 1.5rem;
+            }
+
+            .loader {
+              width: 40px;
+              height: 40px;
+            }
+          }
+
+          /* Tablet responsiveness */
+          @media (max-width: 480px) {
+            .callback-text {
+              font-size: 1.2rem;
+            }
+
+            .loader {
+              width: 35px;
+              height: 35px;
+            }
+          }
+        `}
+      </style>
+      <div className="callback-container">
+        <div className="callback-text">Redirecting...</div>
+        <div className="loader"></div>
+      </div>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100vh',
-    flexDirection: 'column',
-    textAlign: 'center',
-  },
-  text: {
-    fontSize: '50px',
-    marginBottom: '20px',
-  },
-  loader: {
-    border: '10px solid #f3f3f3',
-    borderTop: '10px solid #3498db',
-    borderRadius: '50%',
-    width: '50px',
-    height: '50px',
-    animation: 'spin 2s linear infinite',
-  },
- 
 };
 
 export default Callback;

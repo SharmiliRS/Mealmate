@@ -7,39 +7,7 @@
   }
   
   
-  /* Navbar */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #fff;
-  }
   
-  .navbar .logo {
-    font-weight: bold;
-    font-size: 20px;
-  }
-  
-  .navbar a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #000;
-  }
-  
-  .sign-in-btn, .sign-up-btn {
-    background-color: #3e5e41;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .sign-up-btn {
-    background-color: transparent;
-    color: #000;
-    border: 1px solid #000;
-  }
   
   /* Login Section */
   .login-container {
@@ -54,7 +22,7 @@
     margin: auto;
     text-align: center;
     background-color: #f2f2f2;
-    padding: 40px;
+    padding: 50px 40px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   }
@@ -70,6 +38,7 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 1rem;
   }
   
   .submit-btn {
@@ -81,14 +50,36 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 15px;
   }
   
-  .signup-text {
-    margin-top: 20px;
-  }
-  
-  .signup-text a {
-    color: #3e5e41;
-    text-decoration: none;
+  .signin-button {
+    padding: 12px 25px;
+    background-color: #014d40;
+    color: white;
     font-weight: bold;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .signin-button:hover {
+    background-color: #016c57;
+  }
+  
+  .signin-text {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .signin-text a {
+    color: #014d40;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .signin-text a:hover {
+    text-decoration: underline;
   }

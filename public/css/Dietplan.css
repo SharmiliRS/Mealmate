@@ -104,8 +104,7 @@
   }
   
   /* Social Icons */
-  footer .social_icon,
-  footer .menu {
+  footer .social_icon {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -113,12 +112,11 @@
     flex-wrap: wrap; /* Ensures proper layout on smaller screens */
   }
   
-  footer .social_icon li,
-  footer .menu li {
+  footer .social_icon li {
     list-style: none;
   }
   
-  footer .social_icon li a {
+  footer .social_icon li p {
     font-size: 2.5em;
     color: white;
     margin: 0 10px;
@@ -126,23 +124,8 @@
     transition: 0.3s ease; /* Smoother hover transition */
   }
   
-  footer .social_icon li a:hover {
+  footer .social_icon li p:hover {
     transform: translateY(-10px);
-  }
-  
-  footer .menu li a {
-    font-size: 1.2rem;
-    color: antiquewhite;
-    margin: 0 10px;
-    display: inline-block;
-    transition: 0.3s ease;
-    text-decoration: none;
-    opacity: 0.8;
-  }
-  
-  footer .menu li a:hover {
-    opacity: 1;
-    color: white;
   }
   
   .copyright {
@@ -170,11 +153,11 @@
     .wearables-btn {
       width: 80%; /* Make buttons full width for small screens */
     }
-    footer .social_icon li a {
+    footer .social_icon li p {
       font-size: 2em; /* Scale down icons */
   }
 
-  footer .menu li a {
+  footer .menu li p {
       font-size: 1rem; /* Adjust footer menu font size */
   }
   }
@@ -193,11 +176,11 @@
       width: 100%; /* Buttons take full width on very small screens */
       font-size: 14px; /* Adjust button font size */
     }
-    footer .social_icon li a {
+    footer .social_icon li p {
       font-size: 1.8em;
   }
 
-  footer .menu li a {
+  footer .menu li p {
       font-size: 0.9rem;
       margin: 5px; /* Reduce spacing for smaller screens */
   }
