@@ -22,7 +22,7 @@ const Callback = () => {
 
   const fetchAccessToken = async (authorizationCode) => {
     const clientId = "192a97a3726f531a0ea724c069ec1e2ee3882f2e98c23a2628f861020de22c15"; // Replace with your Withings client ID
-    const clientSecret = "db285d36b259b112fe734e3f0c6a2c9ce7a5b3554f9d752049a05d473092d67a"; // Replace with your Withings client secret
+    const clientSecret = "7f73c0f4896a1c7a173a0cd61b86757bbbe966dd6e1b52b3effbdb32b0507501"; // Replace with your Withings client secret
     const redirectUri = "http://localhost:3000/callback"; // Replace with your redirect URI
 
     const tokenUrl = "https://wbsapi.withings.net/v2/oauth2";
