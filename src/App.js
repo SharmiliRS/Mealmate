@@ -12,6 +12,7 @@ import DietPlan from "./components/Dietplan";
 import Callback from "./components/Callback";
 import SuggestFoodPage from "./components/Suggestfood";
 import DisplayData from "./components/Displaydata";
+import TrackProgress from "./components/Trackprogress";
 
 function App() {
   
@@ -32,6 +33,7 @@ function App() {
         <Route path="/callback" element={<Callback />} />
         <Route path="/suggest-food" element={<SuggestFoodPage />}/>
         <Route path="/display-data" element={<DisplayData />} />
+        <Route path="/trackprogress" element={<TrackProgress />} />
       </Routes>
     </Router>
   );
